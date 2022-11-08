@@ -1,7 +1,7 @@
-import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
+import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../AuthProvider/AuthProvider";
+import { AuthContext } from "../../../context/authProvider'/AuthPovider";
 
 const SignUp = () => {
   const {
@@ -12,7 +12,6 @@ const SignUp = () => {
   } = useContext(AuthContext);
   const [error, setError] = useState("");
   const googleProvider = new GoogleAuthProvider();
-  const githubProvider = new GithubAuthProvider();
   const handlerSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -53,13 +52,7 @@ const SignUp = () => {
       .then(() => {})
       .catch((error) => console.log(error));
   };
-  //user github signin function
-  const handlerGitHub = () => {
-    providerLogin(githubProvider)
-      .then(() => {})
 
-      .catch((error) => console.log(error));
-  };
   // const handlerUserEmailVarification = () => {
   //   userEmailVarification()
   //     .then(() => {})
@@ -95,7 +88,6 @@ const SignUp = () => {
             </svg>
           </button>
           <button
-            onClick={handlerGitHub}
             aria-label="Log in with GitHub"
             className="p-3 rounded-sm  hover:bg-slate-500"
           >

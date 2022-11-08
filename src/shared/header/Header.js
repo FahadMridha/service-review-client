@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/authProvider'/AuthPovider";
 
 const Header = () => {
+  const { user } = useContext(AuthContext);
+
   const menuItems = (
     <>
       <>
@@ -15,10 +18,10 @@ const Header = () => {
           <Link to="/blog">Blog</Link>
         </li>
       </>
-      {"user"?.email ? (
+      {user?.email ? (
         <>
           <li className="font-semibold">
-            <Link to="/orders">Orders</Link>
+            <Link to="/addServices">Add Services</Link>
           </li>
           <li className="font-semibold">
             <button className="btb btn-ghost">Log Out</button>

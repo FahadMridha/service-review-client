@@ -1,6 +1,48 @@
-import { Link } from "react-router-dom";
+import { GoogleAuthProvider } from "firebase/auth";
+import React, { useContext, useState } from "react";
+import toast from "react-hot-toast";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../context/authProvider'/AuthPovider";
 
 const Login = () => {
+  const { signIn, setLoding, providerLogin } = useContext(AuthContext);
+  const [error, setError] = useState("");
+  const googleProvider = new GoogleAuthProvider();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
+  const handlerLogin = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    signIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success("successfully login");
+
+        form.reset();
+        setError("");
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.error("error:", error);
+        setError(error.message);
+      })
+      .finally(() => {
+        setLoding(false);
+      });
+  };
+  //user google signin function
+  const handlerGoogleSignUp = () => {
+    providerLogin(googleProvider).then(() => {});
+    navigate(from, { replace: true }).catch((error) => {
+      console.error("error:", error);
+    });
+  };
+
   return (
     <div className="flex justify-center items-center pt-8">
       <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-slate-600 text-gray-900">
@@ -14,7 +56,7 @@ const Login = () => {
           noValidate=""
           action=""
           className="space-y-6 ng-untouched ng-pristine ng-valid"
-          //   onSubmit={handlerLogin}
+          onSubmit={handlerLogin}
         >
           <div className="space-y-4">
             <div>
@@ -54,7 +96,7 @@ const Login = () => {
               Sign in
             </button>
           </div>
-          <span className="text-yellow-600">{"error"} </span>
+          <span className="text-yellow-600">{error} </span>
         </form>
         <div className="space-y-1">
           <button className="text-xs hover:underline text-gray-400">
@@ -73,7 +115,7 @@ const Login = () => {
         </div>
         <div className="flex justify-center space-x-4 border shadow-xl">
           <button
-            // onClick={handlerGoogleSignUp}
+            onClick={handlerGoogleSignUp}
             aria-label="Log in with Google"
             className="p-3 rounded-sm hover:bg-slate-500"
           >
