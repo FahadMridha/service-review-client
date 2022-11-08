@@ -1,26 +1,16 @@
 [
   {
-    "_id": "636a0e1aa0e0a47f7c5d0fe4",
-    "index": 0,
-    "price": "$400",
-    "image": "https://www.verywellfit.com/thmb/ReqEvonRm0JYJUjGwWQJrnYtD7U=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/470895179-56a2b6a53df78cf7727917ea.jpg",
-    "rating": 4.5,
+    "_id": "636a0e1a5da9d5ade728e8ba",
+    "index": 4,
+    "price": "$976",
+    "image": "https://www.verywellfit.com/thmb/8M6pWpRiz6qAzDHknmQr5hBay6o=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-1320688078-fa8402838498409a86d970437558ac18.jpg",
+    "rating": 3.1,
     "eyeColor": "blue",
-    "name": "Workouts for Stress Relief",
-    "description": "How do you deal with stress? If you’re like most people, you probably have a mixed bag of tools. Some are healthy, like taking a day off or getting a massage, and some are not so healthy, like eating sweets or drinking too much. It’s a good idea to have a variety of ways to reduce tension so you always have something to reach for (besides those chips or glass of wine) that offers relief.Higher intensity cardio is great for stress reduction because your body releases endorphins, feel-good hormones that boost your energy ",
-    "company": "OHMNET"
+    "name": "Guide to Fall Fitness and Health",
+    "description": "Without the heat and humidity, outdoor workouts become much more comfortable and, after a busy summer, many of us are ready to get back to some sort of fitness routine. Fall weather, for many areas, offers some of the best outdoor workouts all year long.Walking is just about the easiest way to exercise outside and a great way to get in some extra movement throughout the day. With cooler weather, you don't have to worry about sweating as much, so that may make it easier to be active all day long.",
+    "company": "MIXERS"
   },
-  {
-    "_id": "636a0e1acdffdb7c04b61578",
-    "index": 1,
-    "price": "$540",
-    "image": "https://www.verywellfit.com/thmb/12c_Fh9mDxlUOj46KISDVsLaXiI=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/senior-woman-in-plank-position-in-conservatory-513480944-570c3bc43df78c7d9e03f0e0.jpg",
-    "rating": 5,
-    "eyeColor": "green",
-    "name": "Functional Fitness For Weight Management",
-    "description": "For many exercisers, functional training is a workout for the muscles and the mind. It improves the way your brain talks to your muscles so your body works better. During each functional training exercise, you must focus closely on the movement to stay balanced and maintain good posture.n a typical functional workout session, you might do 5 to 10 different exercises that help improve the way your muscles work together, making you feel more coordinated.  ",
-    "company": "XURBAN"
-  },
+
   {
     "_id": "636a0e1a81c9f0638d38c57a",
     "index": 2,
@@ -43,26 +33,38 @@
     "description": "All you need to do is start eating right food. However, in India, this can feel like an insurmountable challenge, given our food culture and dietary habits. For instance, a typical Indian meal is high in carbohydrates and sugar – we eat a lot of potatoes, rice, and sweets.We also love our snacks and can’t imagine a day without our fix of namkeens and bhujias. Even we encourage our friends and family into eating more, as a sign of hospitality and affection, and consider refusing, an extra helping a rebuff. To top it all, we’ve never embraced physical exercise as essential. So, it isn’t a surprise that India is battling with a growing problem of obesity.",
     "company": "XYLAR"
   },
-  {
-    "_id": "636a0e1a5da9d5ade728e8ba",
-    "index": 4,
-    "price": "$976",
-    "image": "https://www.verywellfit.com/thmb/8M6pWpRiz6qAzDHknmQr5hBay6o=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-1320688078-fa8402838498409a86d970437558ac18.jpg",
-    "rating": 3.1,
-    "eyeColor": "blue",
-    "name": "Guide to Fall Fitness and Health",
-    "description": "Without the heat and humidity, outdoor workouts become much more comfortable and, after a busy summer, many of us are ready to get back to some sort of fitness routine. Fall weather, for many areas, offers some of the best outdoor workouts all year long.",
-    "company": "MIXERS"
-  },
+
   {
     "_id": "636a0e1a5da9d5ade728e8ba",
     "index": 5,
     "price": "$450",
-    "image": "http://placehold.it/32x32",
+    "image": "https://post.healthline.com/wp-content/uploads/2019/06/Home_Fitness_Stretch-1200x628-Facebook.jpg",
     "rating": 4.1,
     "eyeColor": "blue",
     "name": "Best At-Home Gym Subscriptions",
     "description": "f you’ve had to become more conscious of your budget, you may have decided to trim some expenses, including your trusty gym membership. However, that shouldn’t mean you’re doomed to a couch potato life or stuck with monotonous walks around the block. Online or app-based workout subscriptions usually offer a free trial so you can try them out and see if the style matches your needs.",
     "company": "MIXERS"
+  },
+  {
+    "_id": "636a0e1aa0e0a47f7c5d0fe4",
+    "index": 0,
+    "price": "$400",
+    "image": "https://www.verywellfit.com/thmb/ReqEvonRm0JYJUjGwWQJrnYtD7U=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/470895179-56a2b6a53df78cf7727917ea.jpg",
+    "rating": 4.5,
+    "eyeColor": "blue",
+    "name": "Workouts for Stress Relief",
+    "description": "How do you deal with stress? If you’re like most people, you probably have a mixed bag of tools. Some are healthy, like taking a day off or getting a massage, and some are not so healthy, like eating sweets or drinking too much. It’s a good idea to have a variety of ways to reduce tension so you always have something to reach for (besides those chips or glass of wine) that offers relief.Higher intensity cardio is great for stress reduction because your body releases endorphins, feel-good hormones that boost your energy ",
+    "company": "OHMNET"
+  },
+  {
+    "_id": "636a0e1acdffdb7c04b61578",
+    "index": 1,
+    "price": "$540",
+    "image": "https://www.verywellfit.com/thmb/12c_Fh9mDxlUOj46KISDVsLaXiI=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/senior-woman-in-plank-position-in-conservatory-513480944-570c3bc43df78c7d9e03f0e0.jpg",
+    "rating": 5,
+    "eyeColor": "green",
+    "name": "Functional Fitness For Weight Management",
+    "description": "For many exercisers, functional training is a workout for the muscles and the mind. It improves the way your brain talks to your muscles so your body works better. During each functional training exercise, you must focus closely on the movement to stay balanced and maintain good posture.n a typical functional workout session, you might do 5 to 10 different exercises that help improve the way your muscles work together, making you feel more coordinated.  ",
+    "company": "XURBAN"
   }
 ]
