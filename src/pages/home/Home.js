@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import Banner from "./Banner";
+import Section from "./Section";
+import ServicesSection from "./ServicesSection";
 
 const Home = () => {
   const [services, setServices] = useState([]);
@@ -9,7 +12,18 @@ const Home = () => {
   }, []);
   return (
     <div>
-      <h3>home :{services.length}</h3>
+      <Banner />
+      <div>
+        <h3>home :{services.length}</h3>
+        {services.map((service) => (
+          <ServicesSection
+            key={service._id}
+            service={service}
+          ></ServicesSection>
+        ))}
+      </div>
+
+      <Section />
     </div>
   );
 };
