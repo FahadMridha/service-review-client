@@ -3,7 +3,13 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/authProvider'/AuthPovider";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+
+  const handlerLogout = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
 
   const menuItems = (
     <>
@@ -24,7 +30,9 @@ const Header = () => {
             <Link to="/addServices">Add Services</Link>
           </li>
           <li className="font-semibold">
-            <button className="btb btn-ghost">Log Out</button>
+            <button onClick={handlerLogout} className="btb btn-ghost">
+              Log Out
+            </button>
           </li>
         </>
       ) : (
