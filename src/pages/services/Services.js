@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import "react-photo-view/dist/react-photo-view.css";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 
 const Services = () => {
   const [services, setServices] = useState([]);
@@ -10,11 +12,15 @@ const Services = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-10 my-6">
       {services.map((service) => (
-        <div>
+        <div key={service._id}>
           <div className="card card-compact w-96 bg-base-100 shadow-xl">
-            <figure>
-              <img className="h-96 w-full" src={service.image} alt="Shoes" />
-            </figure>
+            <PhotoProvider>
+              <figure>
+                <PhotoView src={service.image}>
+                  <img className="h-96 w-full" src={service.image} alt="" />
+                </PhotoView>
+              </figure>
+            </PhotoProvider>
             <div className="card-body">
               <h2 className="card-title">{service.name}</h2>
               <p>Price:{service.price}</p>
