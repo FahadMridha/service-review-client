@@ -7,6 +7,7 @@ import SignUp from "../pages/aboutUser/signup/SignUp";
 import Blog from "../pages/blog/Blog";
 import ErrorPage from "../pages/error/ErrorPage";
 import Home from "../pages/home/Home";
+import ServiceDetails from "../pages/services/ServiceDetails";
 import Services from "../pages/services/Services";
 
 export const router = createBrowserRouter([
@@ -46,6 +47,12 @@ export const router = createBrowserRouter([
       {
         path: "/myReviews",
         element: <MyReviews />,
+      },
+      {
+        path: "/services/:id",
+        element: <ServiceDetails />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/services/${params.id}`),
       },
     ],
   },

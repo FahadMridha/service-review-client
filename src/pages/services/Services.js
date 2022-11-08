@@ -5,7 +5,7 @@ import { PhotoProvider, PhotoView } from "react-photo-view";
 const Services = () => {
   const [services, setServices] = useState([]);
   useEffect(() => {
-    fetch("data.json")
+    fetch("http://localhost:5000/services")
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);
@@ -24,7 +24,7 @@ const Services = () => {
             <div className="card-body">
               <h2 className="card-title">{service.name}</h2>
               <p>Price:{service.price}</p>
-              <p>{service.description}</p>
+              <p>{service.description.slice(0, 100) + "...."}</p>
               <div className="card-actions justify-end">
                 <button className="btn btn-primary">View Details</button>
               </div>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Banner from "./Banner";
 import Section from "./Section";
 import ServicesSection from "./ServicesSection";
@@ -6,7 +7,7 @@ import ServicesSection from "./ServicesSection";
 const Home = () => {
   const [services, setServices] = useState([]);
   useEffect(() => {
-    fetch("data.json")
+    fetch("http://localhost:5000/services")
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);
@@ -21,6 +22,11 @@ const Home = () => {
           ></ServicesSection>
         ))}
       </div>
+      <span className="">
+        <Link to="/services">
+          <button className="btn btn-ghost bg-lime-200 ">See All</button>
+        </Link>
+      </span>
 
       <Section />
     </div>
