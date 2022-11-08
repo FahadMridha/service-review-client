@@ -1,0 +1,68 @@
+[
+  {
+    "_id": "636a0e1aa0e0a47f7c5d0fe4",
+    "index": 0,
+    "price": "$1,321.02",
+    "image": "http://placehold.it/32x32",
+    "rating": 33,
+    "eyeColor": "blue",
+    "name": "Marissa Douglas",
+    "description": "female",
+    "company": "OHMNET"
+  },
+  {
+    "_id": "636a0e1acdffdb7c04b61578",
+    "index": 1,
+    "price": "$3,540.42",
+    "image": "http://placehold.it/32x32",
+    "rating": 21,
+    "eyeColor": "green",
+    "name": "Jasmine Higgins",
+    "description": "female",
+    "company": "XURBAN"
+  },
+  {
+    "_id": "636a0e1a81c9f0638d38c57a",
+    "index": 2,
+    "price": "$1,005.17",
+    "image": "http://placehold.it/32x32",
+    "rating": 23,
+    "eyeColor": "brown",
+    "name": "Gutierrez Peck",
+    "description": "male",
+    "company": "EXTRAWEAR"
+  },
+  {
+    "_id": "636a0e1a30fb947cae7713df",
+    "index": 3,
+    "price": "$3,873.22",
+    "image": "http://placehold.it/32x32",
+    "rating": 35,
+    "eyeColor": "green",
+    "name": "Todd Daugherty",
+    "description": "male",
+    "company": "XYLAR"
+  },
+  {
+    "_id": "636a0e1a5da9d5ade728e8ba",
+    "index": 4,
+    "price": "$3,976.76",
+    "image": "http://placehold.it/32x32",
+    "rating": 31,
+    "eyeColor": "blue",
+    "name": "Hendricks Warner",
+    "description": "male",
+    "company": "MIXERS"
+  },
+  {
+    "_id": "636a0e1a5da9d5ade728e8ba",
+    "index": 4,
+    "price": "$3,976.76",
+    "image": "http://placehold.it/32x32",
+    "rating": 31,
+    "eyeColor": "blue",
+    "name": "Hendricks Warner",
+    "description": "male",
+    "company": "MIXERS"
+  }
+]
