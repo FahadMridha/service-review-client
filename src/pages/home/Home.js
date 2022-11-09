@@ -6,11 +6,13 @@ import ServicesSection from "./ServicesSection";
 
 const Home = () => {
   const [services, setServices] = useState([]);
+  const [limit, setLimit] = useState(3);
   useEffect(() => {
-    fetch("http://localhost:5000/services")
+    console.log(limit);
+    fetch(`http://localhost:5000/services?size=${limit}`)
       .then((res) => res.json())
       .then((data) => setServices(data));
-  }, []);
+  }, [limit]);
   return (
     <div className="m-8">
       <Banner />
