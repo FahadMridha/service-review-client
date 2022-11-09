@@ -25,7 +25,7 @@ const Services = () => {
             <div className="card-body">
               <h2 className="card-title">{service.name}</h2>
               <p>Price:{service.price}</p>
-              <p>{service.description.slice(0, 100) + "...."}</p>
+              <p>{service?.description.slice(0, 100) + "...."}</p>
               <div className="card-actions justify-end">
                 <Link to={`/services/${service._id}`}>
                   <button className="btn btn-primary">View Details</button>
