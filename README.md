@@ -1,6 +1,6 @@
 # Project name
 
-Name:Buy Fitness
+Name: Buy Fitness
 
 # Live Site Link:
 
@@ -21,10 +21,11 @@ toast ->[react-hot-toast](https://react-hot-toast.com/)
 
 # Functional Requirements
 
-- 1.->Can create quiz after startquiz button!
+- 1.->Can create your won user account.
 
-- 2.->Can enter subjects and enter question with it's options and answer at the time of creating quiz.
+- 2.->you can create a new service for user.
 
-  3.->8-11 Question for each quiz required to be completed.
+* 3.->User can review for about your service and edit she/he review.
 
-  4.->Can view the answer about each and every question in the left side of eye icon.
+* 4.->when user create a account she/he access two option once is my review and another add new service. otherwise she/he dont saw that and do not create any review about our service.
+* 5.->Its also has jwt othentication system.

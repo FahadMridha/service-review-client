@@ -3,14 +3,13 @@ import "react-photo-view/dist/react-photo-view.css";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import { Link } from "react-router-dom";
 import UseTitle from "../../hooks/UseTitle";
-import Spinner from "../../shared/spinner/Spinner";
 
 const Services = () => {
   let [loading, setLoading] = useState(true);
   const [services, setServices] = useState([]);
   UseTitle("Services");
   useEffect(() => {
-    fetch("http://localhost:5000/services")
+    fetch("https://service-review-server-side.vercel.app/services")
       .then((res) => res.json())
       .then((data) => {
         setServices(data);
@@ -18,7 +17,15 @@ const Services = () => {
       });
   }, []);
   if (loading) {
-    return <Spinner></Spinner>;
+    return (
+      <>
+        <h2 className="text-xl text-red-500">Loading...........</h2>
+        <div
+          className="radial-progress text-end"
+          style={{ "--value": 70 }}
+        ></div>
+      </>
+    );
   }
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-10 my-6">

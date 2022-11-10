@@ -3,21 +3,32 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../context/authProvider'/AuthPovider";
 import UseTitle from "../../../hooks/UseTitle";
-import Spinner from "../../../shared/spinner/Spinner";
 
 const SignUp = () => {
   const {
     createUser,
     providerLogin,
     updateUserProfile,
+    loding,
     userEmailVarification,
   } = useContext(AuthContext);
   const [error, setError] = useState("");
-  let [loading, setLoading] = useState(true);
+
   const googleProvider = new GoogleAuthProvider();
   UseTitle("sign up");
   const handlerSubmit = (e) => {
     e.preventDefault();
+    if (loding) {
+      return (
+        <>
+          <h2 className="text-xl text-red-500">Loading...........</h2>
+          <div
+            className="radial-progress text-end"
+            style={{ "--value": 70 }}
+          ></div>
+        </>
+      );
+    }
     const form = e.target;
     const name = form.name.value;
     const email = form.email.value;
@@ -29,6 +40,7 @@ const SignUp = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+
         form.reset();
         //update user profile
         handlerUpdateUserProfile(name, photoURL);
@@ -40,11 +52,7 @@ const SignUp = () => {
       .catch((error) => {
         console.error("error:", error);
         setError(error.message);
-        setLoading(false);
       });
-    if (loading) {
-      return <Spinner></Spinner>;
-    }
   };
   //user google signin function
   const handlerGoogleSignUp = () => {

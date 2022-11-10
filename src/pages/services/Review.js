@@ -7,7 +7,6 @@ import ReviewTable from "./ReviewTable";
 const Review = ({ service }) => {
   const { user } = useContext(AuthContext);
   const [reviews, setReviews] = useState([]);
-  const [refresh, setRefresh] = useState(false);
   const { _id, name } = service;
   const handlerReview = (e) => {
     e.preventDefault();
@@ -29,7 +28,7 @@ const Review = ({ service }) => {
       review,
       timestamp,
     };
-    fetch("http://localhost:5000/reviews", {
+    fetch("https://service-review-server-side.vercel.app/reviews", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -47,9 +46,13 @@ const Review = ({ service }) => {
       .catch((error) => console.error(error));
   };
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews?serviceID=${_id}`)
+    fetch(
+      `https://service-review-server-side.vercel.app/reviews?serviceID=${_id}`
+    )
       .then((res) => res.json())
-      .then((data) => setReviews(data));
+      .then((data) => {
+        setReviews(data);
+      });
   }, [_id]);
 
   return (

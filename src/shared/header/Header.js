@@ -2,8 +2,10 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/authProvider'/AuthPovider";
 import logo from "../../assets/images/logo1.png";
+import UseTitle from "../../hooks/UseTitle";
 
 const Header = () => {
+  UseTitle("lheader");
   const { user, logOut } = useContext(AuthContext);
 
   const handlerLogout = () => {
@@ -76,7 +78,7 @@ const Header = () => {
         <img className="w-10 h-10" src={logo} alt="" />
         <Link to="/" className="">
           <span className="text-5xl font-semibold text-lime-800 ">
-            Buy Fitness
+            BUY FITNESS
           </span>
         </Link>
       </div>

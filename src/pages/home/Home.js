@@ -11,7 +11,9 @@ const Home = () => {
   UseTitle("home");
   useEffect(() => {
     console.log(limit);
-    fetch(`http://localhost:5000/services?size=${limit}`)
+    fetch(
+      `https://service-review-server-side.vercel.app/services?size=${limit}`
+    )
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, [limit]);

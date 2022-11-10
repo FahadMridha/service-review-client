@@ -4,12 +4,11 @@ import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/authProvider'/AuthPovider";
 import UseTitle from "../../../hooks/UseTitle";
-import Spinner from "../../../shared/spinner/Spinner";
 
 const Login = () => {
-  const { signIn, providerLogin } = useContext(AuthContext);
+  const { signIn, providerLogin, loding } = useContext(AuthContext);
   const [error, setError] = useState("");
-  let [loading, setLoading] = useState(true);
+
   const googleProvider = new GoogleAuthProvider();
   const navigate = useNavigate();
   const location = useLocation();
@@ -20,47 +19,56 @@ const Login = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    signIn(email, password)
-      // .then((result) => {
-      //   const user = result.user;
-      //   toast.success("successfully login");
-      //   form.reset();
-      //   setError("");
-      //   navigate(from, { replace: true });
-      // })
-      .then((result) => {
-        const user = result.user;
-        const currentUser = {
-          email: user.email,
-        };
 
-        // get jwt token
-        fetch("http://localhost:5000/jwt", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(currentUser),
+    if (loding) {
+      return (
+        <>
+          <h2 className="text-xl text-red-500">Loading...........</h2>
+          <div
+            className="radial-progress text-end"
+            style={{ "--value": 70 }}
+          ></div>
+        </>
+      );
+    } else {
+      signIn(email, password)
+        // .then((result) => {
+        //   const user = result.user;
+        //   toast.success("successfully login");
+        //   form.reset();
+        //   setError("");
+        //   navigate(from, { replace: true });
+        // })
+        .then((result) => {
+          const user = result.user;
+          const currentUser = {
+            email: user.email,
+          };
+
+          // get jwt token
+          fetch("https://service-review-server-side.vercel.app/jwt", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(currentUser),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+
+              //set local storage
+              localStorage.setItem("genius-token", data.token);
+            });
+          toast.success("successfully login with JWT token");
+          navigate(from, { replace: true });
         })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
 
-            //set local storage
-            localStorage.setItem("genius-token", data.token);
-          });
-        toast.success("successfully login with JWT token");
-        navigate(from, { replace: true });
-      })
-      .catch((error) => {
-        console.error("error:", error);
-        setError(error.message);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-    if (loading) {
-      return <Spinner></Spinner>;
+        .catch((error) => {
+          console.error("error:", error);
+          setError(error.message);
+        })
+        .finally(() => {});
     }
   };
 

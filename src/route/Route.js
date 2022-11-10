@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../layout/Main";
 import AddService from "../pages/aboutUser/addServices/AddService";
 import Login from "../pages/aboutUser/login/Login";
+import EditReview from "../pages/aboutUser/reviews/EditReview";
 import MyReviews from "../pages/aboutUser/reviews/MyReviews";
 import SignUp from "../pages/aboutUser/signup/SignUp";
 import Blog from "../pages/blog/Blog";
@@ -58,10 +59,16 @@ export const router = createBrowserRouter([
         ),
       },
       {
+        path: "/editReview",
+        element: <EditReview></EditReview>,
+      },
+      {
         path: "/services/:id",
         element: <ServiceDetails />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/services/${params.id}`),
+          fetch(
+            `https://service-review-server-side.vercel.app/services/${params.id}`
+          ),
       },
     ],
   },
