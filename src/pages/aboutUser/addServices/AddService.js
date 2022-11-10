@@ -1,7 +1,9 @@
 import React from "react";
 import toast from "react-hot-toast";
+import UseTitle from "../../../hooks/UseTitle";
 
 const AddService = () => {
+  UseTitle("add service");
   const handlerSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -49,7 +51,7 @@ const AddService = () => {
             type="text"
             name="name"
             placeholder="Enter Your service name"
-            className="w-1/2 px-3 py-2 border rounded-md border-gray-300 focus:border-gray-900 bg-lime-300 text-gray-500"
+            className="w-1/2 px-3 py-2 border rounded-md border-gray-300 shadow-xl focus:border-gray-900 bg-slate-100  text-gray-500"
           />
         </div>
         <div>
@@ -57,7 +59,7 @@ const AddService = () => {
             type="text"
             name="price"
             placeholder="Enter price"
-            className="w-1/2 px-3 py-2 border rounded-md border-gray-300 focus:border-gray-900 bg-lime-300 text-gray-500"
+            className="w-1/2 px-3 py-2 border rounded-md border-gray-300 shadow-xl focus:border-gray-900 bg-slate-100 text-gray-500"
             data-temp-mail-org="0"
           />
         </div>
@@ -67,7 +69,7 @@ const AddService = () => {
             name="image"
             id="photoURL"
             placeholder="Provide your Photo URL"
-            className="w-1/2 px-3 py-2 border rounded-md border-gray-300 focus:border-gray-900 bg-lime-300 text-gray-500"
+            className="w-1/2 px-3 py-2 border rounded-md border-gray-300 shadow-xl focus:border-gray-900 bg-slate-100 text-gray-500"
             data-temp-mail-org="0"
           />
         </div>
@@ -77,7 +79,7 @@ const AddService = () => {
               type="text"
               name="description"
               placeholder="Add description"
-              className="w-1/2 px-3 py-2 border rounded-md border-gray-300 bg-lime-300 focus:border-gray-900 text-gray-500"
+              className="w-1/2 px-3 py-2 border rounded-md border-gray-300 bg-slate-100 shadow-xl focus:border-gray-900 text-gray-500"
             />
           </div>
         </div>
@@ -85,7 +87,7 @@ const AddService = () => {
           <div>
             <button
               type="submit"
-              className="w-1/2 px-8 py-3 font-semibold rounded-md bg-gray-900 hover:bg-gray-700 hover:text-white text-gray-100"
+              className="w-1/2 px-8 py-3 font-semibold rounded-md bg-gray-900 bann hover:bg-gray-700 hover:text-white text-gray-100"
             >
               Add new Service
             </button>

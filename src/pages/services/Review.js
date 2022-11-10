@@ -7,7 +7,7 @@ import ReviewTable from "./ReviewTable";
 const Review = ({ service }) => {
   const { user } = useContext(AuthContext);
   const [reviews, setReviews] = useState([]);
-  const { _id } = service;
+  const { _id, name } = service;
   const handlerReview = (e) => {
     e.preventDefault();
     const form = e.target;

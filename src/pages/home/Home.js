@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import UseTitle from "../../hooks/UseTitle";
 import Banner from "./Banner";
 import Section from "./Section";
 import ServicesSection from "./ServicesSection";
@@ -7,6 +8,7 @@ import ServicesSection from "./ServicesSection";
 const Home = () => {
   const [services, setServices] = useState([]);
   const [limit, setLimit] = useState(3);
+  UseTitle("home");
   useEffect(() => {
     console.log(limit);
     fetch(`http://localhost:5000/services?size=${limit}`)
@@ -24,11 +26,10 @@ const Home = () => {
           ></ServicesSection>
         ))}
       </div>
-      <span className="">
-        <Link to="/services">
-          <button className="btn btn-ghost bg-lime-200 ">See All</button>
-        </Link>
-      </span>
+
+      <button className="btn btn-ghost my-4 text-center bg-lime-200 ">
+        <Link to="/services">See All Services </Link>
+      </button>
 
       <Section />
     </div>

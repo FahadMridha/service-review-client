@@ -1,75 +1,76 @@
 import React from "react";
+import UseTitle from "../../hooks/UseTitle";
 
 const Blog = () => {
+  UseTitle("blog");
   return (
     <div className="w-full">
-      <h2 className="text-center text-xl border shadow-xl mt-10  p-6 mx-8 rounded-md  bg-slate-400 font-bold text-orange-700">
+      <h2 className="text-center text-xl border shadow-xl mt-10  p-6 mx-8 rounded-md  bg-slate-100 font-bold text-orange-700">
         Question Section
       </h2>
-      <div className="bg-slate-500 p-4 shadow-xl rounded-lg text-lg mx-8 mt-5">
-        <h1 className="test-2xl font-bold text-left">Qsn1.what is cors?</h1>
-        <p>
-          <span className="font-semibold">Answer:</span> <br />
-          Cross-origin resource sharing (CORS) is a mechanism that allows
-          restricted resources on a web page to be requested from another domain
-          outside the domain. Cross-Origin Resource Sharing (CORS) is an
-          HTTP-header based mechanism that allows a server to indicate any
-          origins (domain, scheme, or port) other than its own from which a
-          browser should permit loading resources. If your REST API's resources
-          receive non-simple cross-origin HTTP requests, you need to enable CORS
-          support.
-        </p>
-      </div>
-      <div className=" bg-slate-500 p-4 shadow-xl rounded-lg text-lg mx-8 mt-5">
+      <div className="bg-slate-200 p-4 shadow-xl rounded-lg text-lg mx-8 mt-5">
         <h1 className="test-2xl font-bold text-left">
-          Qsn2. Why are you using firebase? What other options do you have to
-          implement authentication?
+          Qsn1.difference between sql and nosql?
         </h1>
         <p>
           <span className="font-semibold">Answer:</span> <br />
-          sing firebase because Firebase Authentication provides backend
-          services, easy-to-use SDKs, and ready-made UI libraries to
-          authenticate users to your app. It supports authentication using
-          passwords, phone numbers, popular federated identity providers like
-          Google, Facebook and Twitter, and more.The Firebase Realtime Database
-          lets you build rich, collaborative applications by allowing secure
-          access to the database directly from client-side code.
+          CSQL is the programming language used to interface with relational
+          databases. (Relational databases model data as records in rows and
+          tables with logical links between them). NoSQL is a class of DBMs that
+          are non-relational and generally do not use SQL.When it comes to
+          choosing a database the biggest decisions is picking a relational
+          (SQL) or non-relational (NoSQL) data structure. While both the
+          databases are viable options still there are certain key differences
+          between the two that users must keep in mind when making a decision.
+        </p>
+      </div>
+      <div className=" bg-slate-200 p-4 shadow-xl rounded-lg text-lg mx-8 mt-5">
+        <h1 className="test-2xl font-bold text-left">
+          Qsn2. What is JWT, and how does it work?
+        </h1>
+        <p>
+          <span className="font-semibold">Answer:</span> <br />
+          What is JWT (JSON Web Token)? JSON Web Token (JWT) is an open standard
+          (RFC 7519) for securely transmitting information between parties as
+          JSON object. It is compact, readable and digitally signed using a
+          private key/ or a public key pair by the Identity Provider(IdP).
           <br />
-          Other options doi have to implement authentication is Appwrite is a
-          backend server for Flutter, Mobile, and Web developers. It is
-          open-source, secure, and provides a self-hosting solution that is easy
-          to use. It is a great open source Firebase alternative. Appwrite
-          supports multiple SDKs, including Flutter, Web, Apple, and Android.
+          The purpose of using JWT is not to hide data but to ensure the
+          authenticity of the data. JWT is signed and encoded, not encrypted.
+          JWT is a token based stateless authentication mechanism. Since it is a
+          client-side based stateless session, server doesn't have to completely
+          rely on a datastore(database) to save session information.
         </p>
       </div>
-      <div className=" bg-slate-500 p-4 shadow-xl rounded-lg text-lg mx-8 mt-5">
+      <div className=" bg-slate-200 p-4 shadow-xl rounded-lg text-lg mx-8 mt-5">
         <h1 className="test-2xl font-bold text-left">
-          Qsn3.How does the private route work?
+          Qsn3.What is the difference between javascript and NodeJS??
         </h1>
         <p>
           <span className="font-semibold">Answer:</span> <br />
-          The private route component is similar to the public route, the only
-          change is that redirect URL and authenticate condition. If the user is
-          not authenticated he will be redirected to the login page and the user
-          can only access the authenticated routes If he is authenticated
-          (Logged in)
+          JavaScript is a simple programming language that can be used with any
+          browser that has the JavaScript Engine installed. Node. js, on the
+          other hand, is an interpreter or execution environment for the
+          JavaScript programming language.Javascript is a programming language
+          that is used for writing scripts on the website. NodeJS is a
+          Javascript runtime environment
         </p>
       </div>
-      <div className=" bg-slate-500 p-4 shadow-xl rounded-lg text-lg mx-8 mt-5">
+      <div className=" bg-slate-200 p-4 shadow-xl rounded-lg text-lg mx-8 mt-5">
         <h1 className="test-2xl font-bold text-left">
-          Qsn3. What is Node? How does Node work?
+          Qsn4. How does NodeJS handle multiple requests at the same time?
         </h1>
         <p>
           <span className="font-semibold">Answer:</span> <br />
-          It is a used as backend service where javascript works on the
-          server-side of the application. This way javascript is used on both
-          frontend and backend. Node. js runs on chrome v8 engine which converts
-          javascript code into machine code, it is highly scalable, lightweight,
-          fast, and data-intensive. Node allows developers to write JavaScript
-          code that runs directly in a computer process itself instead of in a
-          browser. Node can, therefore, be used to write server-side
-          applications with access to the operating system, file system, and
-          everything else required to build fully-functional applications.
+          How NodeJS handle multiple client requests? NodeJS receives multiple
+          client requests and places them into EventQueue. NodeJS is built with
+          the concept of event-driven architecture. NodeJS has its own EventLoop
+          which is an infinite loop that receives requests and processes them.We
+          know NodeJS application is single-threaded. Say, if processing
+          involves request A that takes 10 seconds, it does not mean that a
+          request which comes after this request needs to wait 10 seconds to
+          start processing because NodeJS event loops are only single-threaded.
+          The entire NodeJS architecture is not single-threaded.
         </p>
       </div>
     </div>

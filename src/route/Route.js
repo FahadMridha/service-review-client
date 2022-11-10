@@ -9,6 +9,7 @@ import ErrorPage from "../pages/error/ErrorPage";
 import Home from "../pages/home/Home";
 import ServiceDetails from "../pages/services/ServiceDetails";
 import Services from "../pages/services/Services";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -42,11 +43,19 @@ export const router = createBrowserRouter([
       },
       {
         path: "/addService",
-        element: <AddService />,
+        element: (
+          <PrivateRoute>
+            <AddService />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/myReviews",
-        element: <MyReviews />,
+        element: (
+          <PrivateRoute>
+            <MyReviews />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/services/:id",
