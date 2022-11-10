@@ -1,3 +1,4 @@
+import { Loader } from "@mantine/core";
 import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
@@ -6,7 +7,8 @@ import { AuthContext } from "../../../context/authProvider'/AuthPovider";
 import UseTitle from "../../../hooks/UseTitle";
 
 const Login = () => {
-  const { signIn, providerLogin, loding } = useContext(AuthContext);
+  const { user, signIn, providerLogin, loding, setLoding } =
+    useContext(AuthContext);
   const [error, setError] = useState("");
 
   const googleProvider = new GoogleAuthProvider();
@@ -20,61 +22,70 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    if (loding) {
-      return (
-        <>
-          <h2 className="text-xl text-red-500">Loading...........</h2>
-          <div
-            className="radial-progress text-end"
-            style={{ "--value": 70 }}
-          ></div>
-        </>
-      );
-    } else {
-      signIn(email, password)
-        // .then((result) => {
-        //   const user = result.user;
-        //   toast.success("successfully login");
-        //   form.reset();
-        //   setError("");
-        //   navigate(from, { replace: true });
-        // })
-        .then((result) => {
-          const user = result.user;
-          const currentUser = {
-            email: user.email,
-          };
-
-          // get jwt token
-          fetch("https://service-review-server-side.vercel.app/jwt", {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify(currentUser),
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              console.log(data);
-
-              //set local storage
-              localStorage.setItem("genius-token", data.token);
-            });
-          toast.success("successfully login with JWT token");
-          navigate(from, { replace: true });
+    signIn(email, password)
+      // .then((result) => {
+      //   const user = result.user;
+      //   toast.success("successfully login");
+      //   form.reset();
+      //   setError("");
+      //   navigate(from, { replace: true });
+      // })
+      .then((result) => {
+        const user = result.user;
+        const currentUser = {
+          email: user.email,
+        };
+        setLoding(false);
+        // get jwt token
+        fetch("https://service-review-server-side.vercel.app/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentUser),
         })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
 
-        .catch((error) => {
-          console.error("error:", error);
-          setError(error.message);
-        })
-        .finally(() => {});
-    }
+            //set local storage
+            localStorage.setItem("genius-token", data.token);
+          });
+        toast.success("successfully login with JWT token");
+        navigate(from, { replace: true });
+      })
+
+      .catch((error) => {
+        console.error("error:", error);
+        setError(error.message);
+      })
+      .finally(() => {});
   };
 
   //user google signin function
   const handlerGoogleSignUp = () => {
-    providerLogin(googleProvider).then(() => {});
+    providerLogin(googleProvider).then((result) => {
+      const user = result.user;
+      const currentUser = {
+        email: user.email,
+      };
+
+      // get jwt token
+      fetch("https://service-review-server-side.vercel.app/jwt", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(currentUser),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+
+          //set local storage
+          localStorage.setItem("genius-token", data.token);
+        });
+    });
     navigate(from, { replace: true }).catch((error) => {
       console.error("error:", error);
     });

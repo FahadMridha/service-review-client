@@ -5,7 +5,7 @@ import logo from "../../assets/images/logo1.png";
 import UseTitle from "../../hooks/UseTitle";
 
 const Header = () => {
-  UseTitle("lheader");
+  UseTitle("header");
   const { user, logOut } = useContext(AuthContext);
 
   const handlerLogout = () => {

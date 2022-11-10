@@ -10,6 +10,7 @@ const SignUp = () => {
     providerLogin,
     updateUserProfile,
     loding,
+    setLoding,
     userEmailVarification,
   } = useContext(AuthContext);
   const [error, setError] = useState("");
@@ -40,6 +41,7 @@ const SignUp = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        setLoding(false);
 
         form.reset();
         //update user profile
@@ -57,7 +59,28 @@ const SignUp = () => {
   //user google signin function
   const handlerGoogleSignUp = () => {
     providerLogin(googleProvider)
-      .then(() => {})
+      .then((result) => {
+        const user = result.user;
+        const currentUser = {
+          email: user.email,
+        };
+
+        // get jwt token
+        fetch("https://service-review-server-side.vercel.app/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+
+            //set local storage
+            localStorage.setItem("genius-token", data.token);
+          });
+      })
       .catch((error) => {
         console.error("error:", error);
       });
