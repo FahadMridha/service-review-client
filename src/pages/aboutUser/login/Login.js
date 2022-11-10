@@ -21,11 +21,35 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     signIn(email, password)
+      // .then((result) => {
+      //   const user = result.user;
+      //   toast.success("successfully login");
+      //   form.reset();
+      //   setError("");
+      //   navigate(from, { replace: true });
+      // })
       .then((result) => {
         const user = result.user;
-        toast.success("successfully login");
-        form.reset();
-        setError("");
+        const currentUser = {
+          email: user.email,
+        };
+
+        // get jwt token
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+
+            //set local storage
+            localStorage.setItem("genius-token", data.token);
+          });
+        toast.success("successfully login with JWT token");
         navigate(from, { replace: true });
       })
       .catch((error) => {

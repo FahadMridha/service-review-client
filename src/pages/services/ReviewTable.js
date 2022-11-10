@@ -10,7 +10,7 @@ const ReviewTable = ({ review }) => {
         <div className="flex items-center space-x-3">
           <div className="avatar">
             <div className="mask mask-squircle w-12 h-12">
-              <img src={user?.photoURL} alt="Avatar" />
+              <img src={review?.photoURL} alt="Avatar" />
             </div>
           </div>
           <div>

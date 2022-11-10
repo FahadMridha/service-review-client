@@ -3,24 +3,35 @@ import { AuthContext } from "../../../context/authProvider'/AuthPovider";
 import UseTitle from "../../../hooks/UseTitle";
 
 const MyReviews = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   const [reviews, setReviews] = useState([]);
   UseTitle("my reviews");
 
+
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews?email=${user?.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setReviews(data);
-      });
+    fetch(`http://localhost:5000/my-reviews?email=${user?.email}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("genius-token")}`,
+      },
+    })
+      .then((res) => {
+        if (res.status === 403 || res.status === 401) {
+          logOut()
+            .then(() => {})
+            .catch((error) => console.log(error));
+        }
+        return res.json();
+      })
+      .then((data) => setReviews(data));
   }, [user?.email]);
+
   const handleDeleteOrder = (id) => {
+    console.log(id);
     const procced = window.confirm(
       "Are you sure You want to delete this product"
     );
     if (procced) {
-      fetch(`http://localhost:5000/reviews/${id}}`, {
+      fetch(`http://localhost:5000/reviews/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -28,9 +39,7 @@ const MyReviews = () => {
           console.log(data);
           if (data.deletedCount > 0) {
             alert("successfully Delete");
-            const remaningReviews = reviews.filter(
-              (review) => review._id !== id
-            );
+            const remaningReviews = reviews.filter((rvw) => rvw._id !== id);
             setReviews(remaningReviews);
           }
         });
