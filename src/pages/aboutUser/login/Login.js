@@ -7,8 +7,9 @@ import { AuthContext } from "../../../context/authProvider'/AuthPovider";
 import UseTitle from "../../../hooks/UseTitle";
 
 const Login = () => {
-  const { user, signIn, providerLogin, loding, setLoding } =
+  const {  signIn, providerLogin, loding, setLoding } =
     useContext(AuthContext);
+
   const [error, setError] = useState("");
 
   const googleProvider = new GoogleAuthProvider();
@@ -17,25 +18,21 @@ const Login = () => {
   const from = location.state?.from?.pathname || "/";
   UseTitle("login");
   const handlerLogin = (e) => {
+    if (loding) {
+      return <p>loding...............</p>;
+    }
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
 
     signIn(email, password)
-      // .then((result) => {
-      //   const user = result.user;
-      //   toast.success("successfully login");
-      //   form.reset();
-      //   setError("");
-      //   navigate(from, { replace: true });
-      // })
       .then((result) => {
         const user = result.user;
         const currentUser = {
           email: user.email,
         };
-        setLoding(false);
+
         // get jwt token
         fetch("https://service-review-server-side.vercel.app/jwt", {
           method: "POST",
@@ -52,43 +49,50 @@ const Login = () => {
             localStorage.setItem("genius-token", data.token);
           });
         toast.success("successfully login with JWT token");
+
         navigate(from, { replace: true });
+        setLoding(false);
       })
 
       .catch((error) => {
         console.error("error:", error);
         setError(error.message);
+        setLoding(false);
       })
       .finally(() => {});
   };
 
   //user google signin function
   const handlerGoogleSignUp = () => {
-    providerLogin(googleProvider).then((result) => {
-      const user = result.user;
-      const currentUser = {
-        email: user.email,
-      };
+    providerLogin(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        const currentUser = {
+          email: user.email,
+        };
 
-      // get jwt token
-      fetch("https://service-review-server-side.vercel.app/jwt", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(currentUser),
+        // get jwt token
+        fetch("https://service-review-server-side.vercel.app/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+
+            //set local storage
+            localStorage.setItem("genius-token", data.token);
+          });
+
+        toast.success("successfully login with Google");
+        setLoding(false);
       })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-
-          //set local storage
-          localStorage.setItem("genius-token", data.token);
-        });
-    });
-    navigate(from, { replace: true }).catch((error) => {
-      console.error("error:", error);
-    });
+      .catch((error) => {
+        console.error("error:", error);
+      });
   };
 
   return (

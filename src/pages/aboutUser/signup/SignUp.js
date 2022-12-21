@@ -19,6 +19,11 @@ const SignUp = () => {
   UseTitle("sign up");
   const handlerSubmit = (e) => {
     e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const photoURL = form.photoURL.value;
+    const password = form.password.value;
     if (loding) {
       return (
         <>
@@ -30,11 +35,6 @@ const SignUp = () => {
         </>
       );
     }
-    const form = e.target;
-    const name = form.name.value;
-    const email = form.email.value;
-    const photoURL = form.photoURL.value;
-    const password = form.password.value;
 
     //user create with email and password by firebase/auth
     createUser(email, password)
@@ -56,6 +56,7 @@ const SignUp = () => {
         setError(error.message);
       });
   };
+
   //user google signin function
   const handlerGoogleSignUp = () => {
     providerLogin(googleProvider)

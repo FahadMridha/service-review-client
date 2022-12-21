@@ -7,7 +7,11 @@ const Section = () => {
       <div>
         <div className="hero min-h-screen bg-base-200">
           <div className="hero-content flex-col lg:flex-row-reverse gap-4">
-            <img src={img} className="max-w-sm rounded-lg shadow-2xl" alt="" />
+            <img
+              src={img}
+              className="max-w-sm rounded-lg shadow-2xl"
+              alt="banner"
+            />
             <div>
               <h1 className="text-5xl font-bold">IMPROVE KEY METRICS</h1>
               <p className="py-6">

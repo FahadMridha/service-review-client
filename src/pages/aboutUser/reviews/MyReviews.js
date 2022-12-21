@@ -48,28 +48,28 @@ const MyReviews = () => {
     }
   };
 
-  const handlerUpdateReview = (reviewInfo) => {
-    // console.log(review);
-    const { review, _id } = reviewInfo;
-    fetch(`https://service-review-server-side.vercel.app/reviews/${_id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ status: review }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.modifiedCount > 0) {
-          const remaning = reviews.filter((rvs) => rvs._id !== _id);
-          const editated = reviews.find((rvs) => rvs._id === _id);
-          editated.status = {};
-          const newReviews = [...remaning, editated];
-          setReviews(newReviews);
-        }
-      });
-  };
+  // const handlerUpdateReview = (reviewInfo) => {
+  //   // console.log(review);
+  //   const { review, _id } = reviewInfo;
+  //   fetch(`https://service-review-server-side.vercel.app/reviews/${_id}`, {
+  //     method: "PATCH",
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //     body: JSON.stringify({ status: review }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       if (data.modifiedCount > 0) {
+  //         const remaning = reviews.filter((rvs) => rvs._id !== _id);
+  //         const editated = reviews.find((rvs) => rvs._id === _id);
+  //         editated.status = {};
+  //         const newReviews = [...remaning, editated];
+  //         setReviews(newReviews);
+  //       }
+  //     });
+  // };
 
   return (
     <div>
@@ -100,10 +100,10 @@ const MyReviews = () => {
                         <div className="font-bold">{review.review}</div>
                       </td>
                       <th>
-                        <Link to="/editReview">
+                        <Link to={`/editReviews/${review._id}`}>
                           {" "}
                           <button
-                            onClick={() => handlerUpdateReview(review)}
+                            // onClick={() => handlerUpdateReview(review)}
                             className="btn btn-ghost btn-xs"
                           >
                             Edit

@@ -10,7 +10,8 @@ const Home = () => {
   const [limit, setLimit] = useState(3);
   UseTitle("home");
   useEffect(() => {
-    console.log(limit);
+    // console.log(limit);
+    //only limit service data show in home page
     fetch(
       `https://service-review-server-side.vercel.app/services?size=${limit}`
     )
@@ -20,18 +21,20 @@ const Home = () => {
   return (
     <div className="m-8">
       <Banner />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {services.map((service) => (
-          <ServicesSection
-            key={service._id}
-            service={service}
-          ></ServicesSection>
-        ))}
+      <div>
+        <p className="text-center text-3xl font-bold mt-12 ">Services</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+          {services.map((service) => (
+            <ServicesSection
+              key={service._id}
+              service={service}
+            ></ServicesSection>
+          ))}
+        </div>
+        <button className="btn btn-primary my-4 text-center border ">
+          <Link to="/services">See All Services </Link>
+        </button>
       </div>
-
-      <button className="btn btn-ghost my-4 text-center bg-lime-200 ">
-        <Link to="/services">See All Services </Link>
-      </button>
 
       <Section />
     </div>

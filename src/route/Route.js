@@ -59,8 +59,12 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/editReview",
+        path: "/editReviews/:id",
         element: <EditReview></EditReview>,
+        loader: ({ params }) =>
+          fetch(
+            `https://service-review-server-side.vercel.app/reviews/${params.id}`
+          ),
       },
       {
         path: "/services/:id",

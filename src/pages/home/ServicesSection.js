@@ -9,11 +9,15 @@ const ServicesSection = ({ service }) => {
   const { image, name, price, description, _id } = service;
   return (
     <div>
-      <div className="card card-compact w-96 bg-base-100 shadow-xl">
+      <div className="card card-compact mt-16 bg-base-100 shadow-xl">
         <PhotoProvider>
           <figure>
             <PhotoView src={image}>
-              <img className="h-96 w-full" src={image} alt="" />
+              <img
+                className="h-64 mt-3 object-cover rounded-lg"
+                src={image}
+                alt=""
+              />
             </PhotoView>
           </figure>
         </PhotoProvider>
