@@ -4,6 +4,7 @@ import UseTitle from "../../hooks/UseTitle";
 import Banner from "./Banner";
 import Section from "./Section";
 import ServicesSection from "./ServicesSection";
+import Start from "./Start";
 
 const Home = () => {
   const [services, setServices] = useState([]);
@@ -22,7 +23,7 @@ const Home = () => {
     <div className="m-8">
       <Banner />
       <div>
-        <p className="text-center text-3xl font-bold mt-12 ">Services</p>
+        <p className="text-center text-5xl font-bold my-12 ">My Services</p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           {services.map((service) => (
             <ServicesSection
@@ -37,6 +38,7 @@ const Home = () => {
       </div>
 
       <Section />
+      <Start />
     </div>
   );
 };

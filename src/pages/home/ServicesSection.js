@@ -14,7 +14,7 @@ const ServicesSection = ({ service }) => {
           <figure>
             <PhotoView src={image}>
               <img
-                className="h-64 mt-3 object-cover rounded-lg"
+                className="h-64 mt-3 object-fill rounded-lg"
                 src={image}
                 alt=""
               />
