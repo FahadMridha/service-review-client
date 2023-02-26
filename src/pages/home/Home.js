@@ -23,6 +23,20 @@ const Home = () => {
     <div className="m-8">
       <Banner />
       <div>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam
+          consectetur tenetur ex ea quae. Corrupti eligendi perferendis vitae
+          distinctio, reprehenderit delectus eos doloremque magnam voluptas
+          recusandae beatae eum minima! Rerum nam ipsam saepe. Minima officia,
+          non modi veniam recusandae asperiores, voluptate excepturi repellendus
+          est esse ab fugit pariatur porro exercitationem? Sit sequi unde est
+          dignissimos, obcaecati accusantium rerum corrupti beatae quos alias
+          maxime minus amet ipsum tempore officia neque molestias laborum esse,
+          cum at quae fugiat deserunt. Sunt, sequi, repudiandae, consectetur
+          necessitatibus architecto voluptatem consequuntur ducimus repellendus
+          itaque doloribus sit velit quasi ad repellat veniam dolore assumenda
+          maxime tempore! Vitae!
+        </p>
         <p className="text-center text-5xl font-bold my-12 ">My Services</p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           {services.map((service) => (
